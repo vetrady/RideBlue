@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">AmexRideShare</string>
-    <string name="title_text">Amex\nRide Share</string>
+    <string name="app_name">RideBlue</string>
+    <string name="title_text">Ride Blue</string>
 
     <!-- Sign-in status messages -->
     <string name="signed_in_fmt">Signed in as: %s</string>
@@ -32,7 +32,7 @@
     <string name="contacts_permission_rationale">Contacts access is needed in order to retrieve your email address.</string>
 
     <!-- Activity Names and Descriptions -->
-    <string name="name_sign_in_activity">Amex RideShare</string>
+    <string name="name_sign_in_activity">Ride Blue</string>
     <string name="desc_sign_in_activity">Signing in, signing out, and revoking access.</string>
     <string name="desc_sign_in_activity_scopes">Signing in, signing out, and revoking access with Google Drive permissions.</string>
 
@@ -54,7 +54,7 @@
          from https://console.developers.google.com/ -->
     <string name="server_client_id">586920633106-s1gpsmnmn843qbv1emltus2bsllq2n4c.apps.googleusercontent.com</string>
 
-    <string name="title_activity_maps">Request A Ride</string>
+    <string name="title_activity_maps">Ride Blue</string>
 
     <!-- Navigation Drawer menu labels -->
     <string name="nav_home">Home</string>

@@ -1,4 +1,4 @@
-package com.google.samples.quickstart.signin;
+package com.americanexpress.developer.rideblue;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,8 +33,6 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
     private GoogleSignInClient mGoogleSignInClient;
 
     private TextView mStatusTextView;
-//    private TextView mProfileName;
-//    private TextView mProfileEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +41,6 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
 
         // Views
         mStatusTextView = findViewById(R.id.status);
-//        mProfileName = findViewById(R.id.ProfileName);
-//        mProfileEmail = findViewById(R.id.ProfileEmail);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -83,9 +79,15 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
         if (account != null && GoogleSignIn.hasPermissions(account, new Scope(Scopes.DRIVE_APPFOLDER))) {
             updateUI(account);
 
-            // If Authenticated Navigate to Maps Screen
-            Intent Navigate = new Intent (SignInActivityWithDrive.this, MapsActivity.class);
-            startActivity(Navigate);
+            // Return Account Information back to Main Controller to display in Navigation Drawer
+            Intent intent = new Intent();
+            intent.putExtra("UserName", account.getDisplayName());
+            intent.putExtra("UserEmail", account.getEmail());
+            intent.putExtra("UserImage", account.getPhotoUrl());
+            setResult(RESULT_OK, intent);
+
+            // Return back to Main Activity on successful login
+            finish();
         } else {
             updateUI(null);
         }
@@ -113,10 +115,15 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             updateUI(account);
 
-            // Once logged in Bring up the Maps View on successful login
-            Intent Navigate = new Intent (SignInActivityWithDrive.this, MapsActivity.class);
-            startActivity(Navigate);
+            // Return Account Information back to Main Controller to display in Navigation Drawer
+            Intent intent = new Intent();
+            intent.putExtra("UserName", account.getDisplayName());
+            intent.putExtra("UserEmail", account.getEmail());
+            intent.putExtra("UserImage", account.getPhotoUrl());
+            setResult(RESULT_OK, intent);
 
+            // Return back to Main Activity on successful login
+            finish();
         } catch (ApiException e) {
             // Signed out, show unauthenticated UI.
             Log.w(TAG, "handleSignInResult:error", e);
@@ -165,9 +172,6 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-
-  //          mProfileName.setText(account.getDisplayName());
-  //          mProfileEmail.setText(account.getEmail());
 
         } else {
             mStatusTextView.setText(R.string.signed_out);

@@ -1,4 +1,4 @@
-package com.google.samples.quickstart.signin;
+package com.americanexpress.developer.rideblue;
 
 import android.content.Context;
 import android.graphics.Bitmap;
