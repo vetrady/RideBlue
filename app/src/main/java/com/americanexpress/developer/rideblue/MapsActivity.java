@@ -1,5 +1,6 @@
-package com.google.samples.quickstart.signin;
+package com.americanexpress.developer.rideblue;
 
+import android.content.Intent;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
@@ -14,6 +15,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -43,15 +45,38 @@ public class MapsActivity extends AppCompatActivity
     private boolean mPermissionDenied = false;
 
     private GoogleMap mMap;
+    public static final int REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        Intent intent = new Intent(this, com.americanexpress.developer.rideblue.SignInActivityWithDrive.class);
+        startActivityForResult(intent, REQUEST_CODE);
+
         SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            if ( extras != null) {
+
+                // Views
+                TextView mProfileName = findViewById(R.id.name);
+                TextView mProfileEmail = findViewById(R.id.website);
+
+                mProfileName.setText(extras.getString("UserName"));
+                mProfileEmail.setText(extras.getString("UserEmail"));
+
+            }
+        }
     }
 
     @Override
