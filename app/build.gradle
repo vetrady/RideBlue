@@ -5,7 +5,7 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "com.google.samples.quickstart.signin"
+        applicationId "com.americanexpress.developer.rideblue"
         minSdkVersion 18
         targetSdkVersion 27
         versionCode 1

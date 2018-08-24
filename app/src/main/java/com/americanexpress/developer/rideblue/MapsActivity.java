@@ -69,11 +69,11 @@ public class MapsActivity extends AppCompatActivity
             if ( extras != null) {
 
                 // Views
-                TextView mProfileName = findViewById(R.id.name);
-                TextView mProfileEmail = findViewById(R.id.website);
+//                TextView mProfileName = findViewById(R.id.name);
+//                TextView mProfileEmail = findViewById(R.id.website);
 
-                mProfileName.setText(extras.getString("UserName"));
-                mProfileEmail.setText(extras.getString("UserEmail"));
+//                mProfileName.setText(extras.getString("UserName"));
+//                mProfileEmail.setText(extras.getString("UserEmail"));
 
             }
         }
