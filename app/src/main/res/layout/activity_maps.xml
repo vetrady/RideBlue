@@ -27,26 +27,61 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/navigation" />
 
-    <Switch
-        android:id="@+id/request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="Request Ride"
+    <RadioGroup
+        android:checkedButton="@+id/rideoff"
+        android:id="@+id/ridetoggle"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         app:layout_constraintBottom_toTopOf="@id/navigation"
-        app:layout_constraintHorizontal_bias="@integer/google_play_services_version"
-        tools:layout_editor_absoluteX="237dp"
-        tools:layout_editor_absoluteY="427dp" />
+        android:layout_marginTop="@dimen/margin_medium"
+        android:background="@color/lighterBlue"
+        android:orientation="horizontal">
 
-    <Switch
-        android:id="@+id/offer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checked="false"
-        android:text="Offer Ride"
-        app:layout_constraintBottom_toTopOf="@id/navigation"
-        app:layout_constraintHorizontal_bias="@integer/google_play_services_version"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="427dp" />
+        <RadioButton
+            android:id="@+id/offer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/ride_offer"
+            android:textColor="@android:color/background_dark" />
+
+        <RadioButton
+            android:id="@+id/rideoff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/ride_off"
+            android:textColor="@android:color/background_dark" />
+
+        <RadioButton
+            android:id="@+id/request"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_widget_background"
+            android:button="@null"
+            android:gravity="center"
+            android:text="@string/ride_request"
+            android:textColor="@android:color/background_dark" />
+
+    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

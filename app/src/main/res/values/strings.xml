@@ -76,10 +76,17 @@
     <string name="action_logout">Logout</string>
     <string name="action_mark_all_read">Mark All as Read</string>
     <string name="privacy_policy">Privacy Policy</string>
+
+    <!-- Toggle menu labels -->
+    <string name="ride_request">Request Ride</string>
+    <string name="ride_offer">Offer Ride</string>
+    <string name="ride_off">No Ride</string>
+
+    <!-- Bottom Navigation Drawer menu labels -->
     <string name="title_activity_bottom_navigation">BottomNavigation</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Account</string>
+    <string name="title_dashboard">Trips </string>
+    <string name="title_notifications">Stream</string>
 
 </resources>
 
