@@ -24,9 +24,10 @@ import com.google.android.gms.tasks.Task;
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
  * profile, which also adds a request dialog to access the user's Google Drive.
  */
-public class SignInActivityWithDrive extends AppCompatActivity implements
+public class MainActivity extends AppCompatActivity implements
         View.OnClickListener {
 
+    public static final int REQUEST_CODE = 1;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9003;
 
@@ -80,14 +81,16 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
             updateUI(account);
 
             // Return Account Information back to Main Controller to display in Navigation Drawer
-            Intent intent = new Intent();
-            intent.putExtra("UserName", account.getDisplayName());
-            intent.putExtra("UserEmail", account.getEmail());
-            intent.putExtra("UserImage", account.getPhotoUrl());
-            setResult(RESULT_OK, intent);
+            //Intent intent = new Intent();
+            //intent.putExtra("UserName", account.getDisplayName());
+            //intent.putExtra("UserEmail", account.getEmail());
+            //intent.putExtra("UserImage", account.getPhotoUrl());
+            //setResult(RESULT_OK, intent);
 
-            // Return back to Main Activity on successful login
-            finish();
+            // Return back to Maps Activity on successful login
+            Intent j = new Intent(this, BottomNavigation.class);
+            startActivity(j);
+            //finish();
         } else {
             updateUI(null);
         }
@@ -116,14 +119,17 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
             updateUI(account);
 
             // Return Account Information back to Main Controller to display in Navigation Drawer
-            Intent intent = new Intent();
-            intent.putExtra("UserName", account.getDisplayName());
-            intent.putExtra("UserEmail", account.getEmail());
-            intent.putExtra("UserImage", account.getPhotoUrl());
-            setResult(RESULT_OK, intent);
+            //Intent intent = new Intent();
+            //intent.putExtra("UserName", account.getDisplayName());
+            //intent.putExtra("UserEmail", account.getEmail());
+            //intent.putExtra("UserImage", account.getPhotoUrl());
+            //setResult(RESULT_OK, intent);
 
             // Return back to Main Activity on successful login
-            finish();
+            //finish();
+            Intent j = new Intent(this, BottomNavigation.class);
+            startActivity(j);
+
         } catch (ApiException e) {
             // Signed out, show unauthenticated UI.
             Log.w(TAG, "handleSignInResult:error", e);

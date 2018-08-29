@@ -83,10 +83,47 @@
     <string name="ride_off">No Ride</string>
 
     <!-- Bottom Navigation Drawer menu labels -->
-    <string name="title_activity_bottom_navigation">BottomNavigation</string>
+    <string name="title_activity_bottom_navigation">Ride Blue</string>
     <string name="title_home">Account</string>
     <string name="title_dashboard">Trips </string>
     <string name="title_notifications">Stream</string>
+
+    <!-- String values for Bottom Navigation Frame -->
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_this_home">helloHome</string>
+    <string name="hello_this_fragment">fragemnethello</string>
+    <string name="hello_this_trip">thistrip</string>
+
+    <!-- Button text -->
+    <string name="btn_logout_from_google">Logout from Google</string>
+    <string name="btn_revoke_access">Revoke Access</string>
+    <string name="cast">cass</string>
+    <string name="desc">desc</string>
+    <string name="user_name">User name</string>
+    <string name="user_gmail">user gmail</string>
+    <string name="Profile_Image">Profile Image</string>
+    <string name="hint_name">name</string>
+    <string name="hint_email">email</string>
+    <string name="address">address</string>
+    <string name="car">car</string>
+    <string name="phoneix_AEDR">PhoneixAedr</string>
+    <string name="phoneix_TRCW">PhoneixTrcw</string>
+    <string name="accessde">Location Access Denied</string>
+
+    <string name="saveDetails">saveDetails</string>
+    <string name="Phoneix_AEDR">Phoneix_AEDR</string>
+    <string name="Phoneix_TRCW">Phoneix_TRCW</string>
+    <string name="Amex_LosAngels">Amex_LosAngels</string>
+    <string name="Amex_Newyork">Amex_Newyork</string>
+    <string name="officeDetails">officeDetails</string>
+    <string name="houseaddress">5635 E Bell RD,
+                                Apt 1024,
+                                Phoenix, AZ.
+                                850254</string>
+    <string name="message1">Please Select the Office Address from the below options</string>
+    <string name="message2">Please fill in your home address</string>
 
 </resources>
 
