@@ -59,6 +59,7 @@ public class BottomNavigation extends AppCompatActivity implements
 
         mapFragment = new HomeFragment();
 
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
