@@ -26,8 +26,8 @@
             android:gravity="center"
             android:text="@string/message1"
             android:textSize="20dp"
-            android:textStyle="bold|italic"
-            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
             android:layout_marginTop="180dp" />
 
 
@@ -42,12 +42,12 @@
             android:id="@+id/editname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
             android:gravity="center"
             android:text="@string/message2"
+            android:textColor="@android:color/black"
             android:textSize="20dp"
-            android:textStyle="bold|italic"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="80dp" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/HouseAddress"

@@ -108,13 +108,13 @@
     <string name="hint_email">email</string>
     <string name="address">address</string>
     <string name="car">car</string>
-    <string name="phoneix_AEDR">PhoneixAedr</string>
-    <string name="phoneix_TRCW">PhoneixTrcw</string>
+    <string name="phoneix_AEDR">Phoenix AEDR</string>
+    <string name="phoneix_TRCW">Phoenix TRCW</string>
     <string name="accessde">Location Access Denied</string>
 
-    <string name="saveDetails">saveDetails</string>
-    <string name="Phoneix_AEDR">Phoneix_AEDR</string>
-    <string name="Phoneix_TRCW">Phoneix_TRCW</string>
+    <string name="saveDetails">Save</string>
+    <string name="Phoneix_AEDR">Phoenix_AEDR</string>
+    <string name="Phoneix_TRCW">Phoenix_TRCW</string>
     <string name="Amex_LosAngels">Amex_LosAngels</string>
     <string name="Amex_Newyork">Amex_Newyork</string>
     <string name="officeDetails">officeDetails</string>

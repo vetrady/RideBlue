@@ -1,52 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/windowBackground"
-    android:paddingBottom="20dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="20dp"
-    tools:context=".fragments.AccountFragment">
-
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+    android:background="@color/blue_grey_700"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:weightSum="4"
+    tools:context=".AccountFragment">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/profile_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/g_top_margin"
+            android:background="@android:color/background_light"
             android:src="@drawable/ic_launcher_big" />
 
 
         <android.widget.TextView
             android:id="@+id/UserName"
-            android:hint="@string/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
+            android:layout_marginTop="80dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/user_name"
+            android:textAlignment="center"
             android:textColor="@color/lightBlue"
-            android:layout_marginTop="80dp" />
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
 
         <android.widget.TextView
             android:id="@+id/UserGmail"
-            android:hint="@string/user_gmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/user_gmail"
+            android:textAlignment="center"
             android:textColor="@android:color/black"
-            android:layout_marginTop="20dp">
-        </android.widget.TextView>
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
-    </android.support.v7.widget.LinearLayoutCompat>
-</android.support.v4.widget.NestedScrollView>
+        <LinearLayout
+            android:id="@+id/sign_out_and_disconnect"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:visibility="visible"
+            tools:visibility="visible">
+
+                <Button
+                    android:id="@+id/sign_out_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/sign_out"
+                    android:theme="@style/ThemeOverlay.MyDarkButton" />
+
+                <Button
+                    android:id="@+id/disconnect_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/disconnect"
+                    android:theme="@style/ThemeOverlay.MyDarkButton" />
+        </LinearLayout>
+
+</LinearLayout>
