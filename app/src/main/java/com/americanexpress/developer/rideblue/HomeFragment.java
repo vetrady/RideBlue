@@ -1,13 +1,13 @@
 package com.americanexpress.developer.rideblue;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.location.Location;
+
+import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -30,6 +30,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.support.v7.app.AppCompatActivity;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import static android.content.Context.LOCATION_SERVICE;
@@ -42,6 +44,7 @@ public class HomeFragment extends Fragment
 
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 1;
     MapView mMapView;
+    RadioGroup rideCategory;
     private GoogleMap googleMap;
     private GoogleApiClient googleApiClient;
 
@@ -75,8 +78,35 @@ public class HomeFragment extends Fragment
         }
 
         mMapView.getMapAsync(this);
-        // Perform any camera updates here
+
+        rideCategory = v.findViewById(R.id.ridetoggle);
+        rideCategory.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                // checkedId is the RadioButton selected
+
+                switch(checkedId) {
+                    case R.id.request:
+                        // switch to request method
+                        Log.i("botton","request");
+                        doAllForRequest();
+                        break;
+                    case R.id.offer:
+                        // switch to offer method
+                        Log.i("botton","offer");
+                        doAllForOffer();
+                        break;
+                    case R.id.rideoff:
+                        // switch to offer method
+                        Log.i("botton","cancel");
+                        doAllForRideCancel();
+                        break;
+                }
+            }
+        });
+
         return v;
+
     }
 
     @Override
@@ -107,8 +137,8 @@ public class HomeFragment extends Fragment
     public void onMapReady(GoogleMap googleMap) {
         // TO-DO
         // latitude and longitude
-        double lat = 17.385044;
-        double lon = 78.486671;
+        double lat = 33.44277;
+        double lon = -112.0728;
 
         googleMap.getUiSettings().setMyLocationButtonEnabled(true);
         googleMap.setMyLocationEnabled(true);
@@ -128,7 +158,7 @@ public class HomeFragment extends Fragment
         // adding marker
         googleMap.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(lat, lon)).zoom(12).build();
+                .target(new LatLng(lat, lon)).zoom(15).build();
         googleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
 
@@ -142,4 +172,13 @@ public class HomeFragment extends Fragment
         mLocationRequest.setSmallestDisplacement(DISPLACEMENT);
     }
 
+    public void doAllForOffer() {
+        //TO-DO
+    }
+    public void doAllForRequest() {
+        //TO-DO
+    }
+    public void doAllForRideCancel() {
+        //TO-DO
+    }
 }
