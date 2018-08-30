@@ -12,4 +12,7 @@
     <color name="blue">#FF005a9c</color>
     <color name="lightBlue">#ff6691c4</color>
     <color name="lighterBlue">#ffcdd8ec</color>
+    <color name="startColor">#24b2eb</color>
+    <color name="centerColor">#4ccbff</color>
+    <color name="endColor">#24b2eb</color>
 </resources>

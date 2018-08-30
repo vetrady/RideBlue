@@ -1,5 +1,6 @@
 package com.americanexpress.developer.rideblue;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -133,6 +134,7 @@ public class HomeFragment extends Fragment
         mMapView.onLowMemory();
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(GoogleMap googleMap) {
         // TO-DO

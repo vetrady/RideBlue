@@ -41,9 +41,14 @@
             android:required="false" />
         <activity
             android:name=".BottomNavigation"
-            android:label="@string/title_activity_bottom_navigation"/>
+            android:label="@string/title_activity_bottom_navigation"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".RequestUserDetails"/>
+        <activity
+            android:name=".AccountFragment"
+            android:parentActivityName=".MainActivity"/>
+
     </application>
 
 </manifest>

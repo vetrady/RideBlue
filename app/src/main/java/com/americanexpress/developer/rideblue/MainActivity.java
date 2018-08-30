@@ -79,18 +79,8 @@ public class MainActivity extends AppCompatActivity implements
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null && GoogleSignIn.hasPermissions(account, new Scope(Scopes.DRIVE_APPFOLDER))) {
             updateUI(account);
-
-            // Return Account Information back to Main Controller to display in Navigation Drawer
-            //Intent intent = new Intent();
-            //intent.putExtra("UserName", account.getDisplayName());
-            //intent.putExtra("UserEmail", account.getEmail());
-            //intent.putExtra("UserImage", account.getPhotoUrl());
-            //setResult(RESULT_OK, intent);
-
-            // Return back to Maps Activity on successful login
-            Intent j = new Intent(this, BottomNavigation.class);
-            startActivity(j);
-            //finish();
+//            Intent j = new Intent(this, BottomNavigation.class);
+//            startActivity(j);
         } else {
             updateUI(null);
         }
@@ -147,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements
 
     // [START signOut]
     private void signOut() {
-        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 // [START_EXCLUDE]
@@ -160,15 +150,8 @@ public class MainActivity extends AppCompatActivity implements
 
     // [START revokeAccess]
     private void revokeAccess() {
-        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-                        updateUI(null);
-                        // [END_EXCLUDE]
-                    }
-                });
+        Intent j = new Intent(this, BottomNavigation.class);
+        startActivity(j);
     }
     // [END revokeAccess]
 
