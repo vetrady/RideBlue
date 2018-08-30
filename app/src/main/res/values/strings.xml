@@ -124,6 +124,7 @@
                                 850254</string>
     <string name="message1">Please Select the Office Address from the below options</string>
     <string name="message2">Please fill in your home address</string>
+    <string name="message3">Please fill in your Car Details</string>
 
 </resources>
 
