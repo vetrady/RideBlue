@@ -45,6 +45,7 @@ public class RequestUserDetails extends AppCompatActivity
     String officeAddress;
     String carDetails;
     int tokenID;
+    String userName;
     UserDetails userData;
     JSONObject user;
     @Override
@@ -63,10 +64,11 @@ public class RequestUserDetails extends AppCompatActivity
                 .build();
         account = GoogleSignIn.getLastSignedInAccount(this);
         //     tokenID = String.valueOf(account.getServerAuthCode());
+        userName = String.valueOf(account.getDisplayName());
         String emailID = String.valueOf(account.getEmail());
         tokenID = emailID.hashCode();
-        String userName = String.valueOf(account.getDisplayName());
-        Log.i("username", userName);
+
+
         //to do call the method to insert details
     }
     public void saveDetails(View button) {
@@ -88,7 +90,7 @@ public class RequestUserDetails extends AppCompatActivity
             user = new JSONObject();
             user.put("key", tokenID);
             JSONObject value= new JSONObject();
-            value.put("name" ,"balu");
+            value.put("name" ,userName);
             value.put("HomeAddr" ,houseAddress);
             value.put("OfficeAddr" ,officeAddress);
             value.put("Vehicle" ,carDetails);
