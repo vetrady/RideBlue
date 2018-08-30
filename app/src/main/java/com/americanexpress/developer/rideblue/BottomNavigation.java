@@ -21,6 +21,8 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 
+import java.io.IOException;
+
 //import static com.americanexpress.developer.rideblue.MainActivity.REQUEST_CODE;
 
 public class BottomNavigation extends AppCompatActivity implements
@@ -30,6 +32,7 @@ public class BottomNavigation extends AppCompatActivity implements
 {
 
     private TextView mTextMessage;
+    private HttpGetRequest httpGetRequest;
     private FragmentManager fragmentManager;
     Fragment fragment = null;
     GoogleSignInOptions gso;
@@ -38,13 +41,16 @@ public class BottomNavigation extends AppCompatActivity implements
     Bundle data;
     Boolean checkUser = false;
     public static final int REQUEST_CODE = 1;
+    int tokenID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("in bottom", "inten2");
 
+
+
         checkUser = checkForUserDetails();
-        if (checkUser) {
+        if ( !checkUser) {
 
             // this intent only if we are missing user details like address and car
             Log.i("came here", "willcall intent");
@@ -56,17 +62,23 @@ public class BottomNavigation extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bottom_navigation);
 
-
-        mapFragment = new HomeFragment();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
-
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestScopes(new Scope(Scopes.DRIVE_APPFOLDER))
                 .requestEmail()
                 .build();
         account = GoogleSignIn.getLastSignedInAccount(this);
         data = new Bundle();
+
+        mapFragment = new HomeFragment();
+        methodForHomeFragment();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
+
+
+
+
+
+
 
         //loading the default fragment
         //loadFragment(new HomeFragment());
@@ -118,6 +130,11 @@ public class BottomNavigation extends AppCompatActivity implements
     public void methodForAccountFragment() {
         fragment = new AccountFragment();
 
+        String emailID = String.valueOf(account.getEmail());
+        tokenID = emailID.hashCode();
+
+        data.putInt("tokenID", tokenID);
+        fragment.setArguments(data);
 
         String userName = String.valueOf(account.getDisplayName());
         data.putString("username", userName);
@@ -131,9 +148,7 @@ public class BottomNavigation extends AppCompatActivity implements
         data.putString("imageurl", imageURL);
         fragment.setArguments(data);
 
-        String tokenID = String.valueOf(account.getIdToken());
-        data.putString("tokenID", tokenID);
-        fragment.setArguments(data);
+
 
 
     }
@@ -142,7 +157,23 @@ public class BottomNavigation extends AppCompatActivity implements
     public void methodForTripsFragment() {
         fragment = new TripsFragment();
 
+        String emailID = String.valueOf(account.getEmail());
+        tokenID = emailID.hashCode();
 
+        data.putInt("tokenID", tokenID);
+        fragment.setArguments(data);
+
+        String userName = String.valueOf(account.getDisplayName());
+        data.putString("username", userName);
+        fragment.setArguments(data);
+
+        String userGmail = String.valueOf(account.getEmail());
+        data.putString("usergmail", userGmail);
+        fragment.setArguments(data);
+
+        String imageURL = String.valueOf(account.getPhotoUrl());
+        data.putString("imageurl", imageURL);
+        fragment.setArguments(data);
         //     String  token = String.valueOf(account.getIdToken());
 
         // method to get trip details
@@ -151,10 +182,29 @@ public class BottomNavigation extends AppCompatActivity implements
     }
 
     public void methodForHomeFragment() {
-        fragment = new HomeFragment();
+
 
         //      String  token = String.valueOf(account.getIdToken());
         // method to show notifications like thanks messages to the user
+
+        Log.i("for home", "appending");
+
+        String emailID = String.valueOf(account.getEmail());
+        tokenID = emailID.hashCode();
+        data.putInt("tokenID", tokenID);
+        mapFragment.setArguments(data);
+
+        String userName = String.valueOf(account.getDisplayName());
+        data.putString("username", userName);
+        mapFragment.setArguments(data);
+
+        String userGmail = String.valueOf(account.getEmail());
+        data.putString("usergmail", userGmail);
+        mapFragment.setArguments(data);
+
+        String imageURL = String.valueOf(account.getPhotoUrl());
+        data.putString("imageurl", imageURL);
+        mapFragment.setArguments(data);
 
 
     }
@@ -168,7 +218,18 @@ public class BottomNavigation extends AppCompatActivity implements
         //to do
 
         Log.i("came here", "returned true");
-        return true;
+
+        httpGetRequest = new HttpGetRequest();
+        try {
+            httpGetRequest.getDetailsFromDB(tokenID, "transactionGet");
+            return true;
+        } catch (IOException e) {
+            //error
+            return false;
+        }
+
+
+
     }
 
     @Override

@@ -1,38 +1,57 @@
 package com.americanexpress.developer.rideblue;
 
+import java.util.HashMap;
+import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "key",
+        "value"
+})
 public class UserDetails {
-    String tokenID;
-    String houseAddress;
-    String officeAddress;
-    String carDetails;
-    public UserDetails(String tokenID,String houseAddress, String officeAddress, String carDetails) {
-        this.houseAddress = houseAddress;
-        this.officeAddress = officeAddress;
-        this.carDetails = carDetails;
-        this.tokenID = tokenID;
+
+    @JsonProperty("key")
+    private String key;
+    @JsonProperty("value")
+    private Value value;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    @JsonProperty("key")
+    public String getKey() {
+        return key;
     }
-    public String getHouseAddress() {
-        return houseAddress;
+
+    @JsonProperty("key")
+    public void setKey(String key) {
+        this.key = key;
     }
-    public void setHouseAddress(String houseAddress) {
-        this.houseAddress = houseAddress;
+
+    @JsonProperty("value")
+    public Value getValue() {
+        return value;
     }
-    public String getOfficeAddress() {
-        return officeAddress;
+
+    @JsonProperty("value")
+    public void setValue(Value value) {
+        this.value = value;
     }
-    public void setOfficeAddress(String officeAddress) {
-        this.officeAddress = officeAddress;
+
+    @JsonAnyGetter
+    public Map<String, Object> getAdditionalProperties() {
+        return this.additionalProperties;
     }
-    public String getCarDetails() {
-        return carDetails;
+
+    @JsonAnySetter
+    public void setAdditionalProperty(String name, Object value) {
+        this.additionalProperties.put(name, value);
     }
-    public void setCarDetails(String carDetails) {
-        this.carDetails = carDetails;
-    }
-    public String getTokenID() {
-        return tokenID;
-    }
-    public void setTokenID(String tokenID) {
-        this.tokenID = tokenID;
-    }
+
+
 }

@@ -1,9 +1,12 @@
 package com.americanexpress.developer.rideblue;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements
     private GoogleSignInClient mGoogleSignInClient;
 
     private TextView mStatusTextView;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,6 +175,8 @@ public class MainActivity extends AppCompatActivity implements
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
+
+
 
     @Override
     public void onClick(View v) {
