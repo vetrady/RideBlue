@@ -1,9 +1,12 @@
 package com.americanexpress.developer.rideblue;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -24,15 +27,19 @@ import com.google.android.gms.tasks.Task;
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
  * profile, which also adds a request dialog to access the user's Google Drive.
  */
-public class SignInActivityWithDrive extends AppCompatActivity implements
+public class MainActivity extends AppCompatActivity implements
         View.OnClickListener {
 
+    public static final int REQUEST_CODE = 1;
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9003;
 
     private GoogleSignInClient mGoogleSignInClient;
 
     private TextView mStatusTextView;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,16 +85,8 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (account != null && GoogleSignIn.hasPermissions(account, new Scope(Scopes.DRIVE_APPFOLDER))) {
             updateUI(account);
-
-            // Return Account Information back to Main Controller to display in Navigation Drawer
-            Intent intent = new Intent();
-            intent.putExtra("UserName", account.getDisplayName());
-            intent.putExtra("UserEmail", account.getEmail());
-            intent.putExtra("UserImage", account.getPhotoUrl());
-            setResult(RESULT_OK, intent);
-
-            // Return back to Main Activity on successful login
-            finish();
+//            Intent j = new Intent(this, BottomNavigation.class);
+//            startActivity(j);
         } else {
             updateUI(null);
         }
@@ -116,14 +115,17 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
             updateUI(account);
 
             // Return Account Information back to Main Controller to display in Navigation Drawer
-            Intent intent = new Intent();
-            intent.putExtra("UserName", account.getDisplayName());
-            intent.putExtra("UserEmail", account.getEmail());
-            intent.putExtra("UserImage", account.getPhotoUrl());
-            setResult(RESULT_OK, intent);
+            //Intent intent = new Intent();
+            //intent.putExtra("UserName", account.getDisplayName());
+            //intent.putExtra("UserEmail", account.getEmail());
+            //intent.putExtra("UserImage", account.getPhotoUrl());
+            //setResult(RESULT_OK, intent);
 
             // Return back to Main Activity on successful login
-            finish();
+            //finish();
+            Intent j = new Intent(this, BottomNavigation.class);
+            startActivity(j);
+
         } catch (ApiException e) {
             // Signed out, show unauthenticated UI.
             Log.w(TAG, "handleSignInResult:error", e);
@@ -141,7 +143,7 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
 
     // [START signOut]
     private void signOut() {
-        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 // [START_EXCLUDE]
@@ -154,15 +156,8 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
 
     // [START revokeAccess]
     private void revokeAccess() {
-        mGoogleSignInClient.revokeAccess().addOnCompleteListener(this,
-                new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // [START_EXCLUDE]
-                        updateUI(null);
-                        // [END_EXCLUDE]
-                    }
-                });
+        Intent j = new Intent(this, BottomNavigation.class);
+        startActivity(j);
     }
     // [END revokeAccess]
 
@@ -180,6 +175,8 @@ public class SignInActivityWithDrive extends AppCompatActivity implements
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
         }
     }
+
+
 
     @Override
     public void onClick(View v) {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="officeList">
+        <item>@string/Phoneix_AEDR</item>
+        <item>@string/Phoneix_TRCW</item>
+        <item>@string/Amex_LosAngels</item>
+        <item>@string/Amex_Newyork</item>
+    </string-array>
+</resources>
